@@ -1,0 +1,24 @@
+def tower_of_hanoi(n, source, dest, a1, a2, a3):
+    if n == 1:
+        print(f"Move disk 1 from {source} to {dest}")
+        return
+    tower_of_hanoi(n-1, source, a1, dest, a2, a3)
+    print(f"Move disk {n} from {source} to {dest}")
+    tower_of_hanoi(n-1, a1, dest, source, a2, a3)
+
+def move_disks(n):
+    tower_of_hanoi(n, "Start", "Dest", "A1", "A2", "A3")
+
+for n in range(1, 11):
+    print(f"Moves for n = {n}:")
+    moves = []
+    tower_of_hanoi(n, "Start", "Dest", "A1", "A2", "A3")
+    if len(moves) > 200:
+        for move in moves[:100]:
+            print(move)
+        print("...")
+        for move in moves[-100:]:
+            print(move)
+    else:
+        for move in moves:
+            print(move)
